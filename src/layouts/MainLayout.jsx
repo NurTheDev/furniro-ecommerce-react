@@ -3,7 +3,7 @@ import Home from '../pages/Home/Home.jsx'
 const MainLayout = () => {
   return (
     <div>
-      <Home/>
+      main layout
     </div>
   )
 }
