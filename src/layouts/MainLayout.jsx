@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Home from '../pages/Home/Home.jsx'
 const MainLayout = () => {
   return (
-    <div>MainLayout</div>
+    <div>
+      <Home/>
+    </div>
   )
 }
 
