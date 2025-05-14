@@ -8,13 +8,16 @@ function BrowseProduct(props) {
     // const { data, loading, error } = ApiData("https://dummyjson.com/products/category/furniture");
     console.log("BrowseProduct", BrowseProductItem);
     const settings = {
-        dots: true,
-        infinite: false,
+        dots: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 4,
+        slidesToScroll: 3,
         initialSlide: 0,
         arrows: true,
+        autoplay: true,
+        width: "100%",
+        autoplaySpeed: 2000,
         responsive: [
             {
                 breakpoint: 1024,
@@ -43,21 +46,25 @@ function BrowseProduct(props) {
         ]
     };
     return (
-        <div>
-            <h2>Browse The Range</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius!</p>
-            {/* Add more content or components related to browsing products here */}
-            <div className={"slider-container mt-10"}>
-                <Slider {...settings}>
-                    {BrowseProductItem.map((item) => (
-                        <div key={item.id} className={"slider-item"}>
-                            <img src={item.image} alt={item.title} className={"slider-image"}/>
-                            <h3>{item.title}</h3>
-                            <p>{item.description}</p>
-                            <p>Price: ${item.price}</p>
-                        </div>
-                    ))}
-                </Slider>
+        <div className={"container mx-auto"}>
+            <div>
+                <div className={"text-center space-y-2"}>
+                    <h2 className={"heading2"}>Browse The Range</h2>
+                    <p className={"text-xl text-Font-Color1"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius!</p>
+                </div>
+                {/* Add more content or components related to browsing products here */}
+                <div className={"slider-container"}>
+                    <Slider {...settings } >
+                        {BrowseProductItem.map((item) => (
+                            <div key={item.id} className={"slider-item !flex justify-center mt-12 items-center flex-col cursor-pointer group"}>
+                                <div className={"overflow-hidden w-full h-[508px] flex justify-center p-4 items-center"}>
+                                    <img src={item.image} alt={item.title} className={"slider-image w-full hover:scale-110 transition duration-200 "} />
+                                </div>
+                                <h3 className={"mt-4 text-2xl font-semibold group-hover:text-primary"}>{item.title}</h3>
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
             </div>
         </div>
     );
