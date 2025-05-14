@@ -1,4 +1,8 @@
 import React from 'react';
+import SecondaryButton from "./SecondaryButton.jsx";
+import {CiShare2} from "react-icons/ci";
+import {FaArrowRightArrowLeft} from "react-icons/fa6";
+import {FaRegHeart} from "react-icons/fa";
 
 function ProductCard({data = [], loading, error}) {
     if (loading) {
@@ -8,16 +12,29 @@ function ProductCard({data = [], loading, error}) {
         <>
             {
                 data.slice(0, 8)?.map((product) => (
-                    <div key={product.id} >
-                        <div className={"relative h-[300px] w-[285px]"}><img className={"h-full w-full object-cover"} src={product.image} alt={"image"}/>
-                            <div className={"absolute top-0 right-2"}>
-                                {product.newArrival? <div>New</div> :<div>{product.discount}</div>}
+                    <div key={product.id} className={" lg:w-[calc(100%/4-1rem)] overflow-hidden cursor-pointer group relative"}>
+                        <div className={"relative h-[300px] w-full overflow-hidden"}><img
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            src={product.image}
+                            alt="image"
+                        />
+                            <div className={"absolute top-4 right-4 "}>
+                                {product.newArrival? <div className={"w-12 h-12 rounded-full flex justify-center items-center bg-green-accent text-white font-semibold"}>New</div> :<div className={"w-12 h-12 rounded-full flex justify-center items-center bg-red-accent text-white font-semibold"}>{product.discount}</div>}
                             </div>
                         </div>
-                        <div className={"bg-light-bg"}>
-                            <h3>{product.title}</h3> <p>{product.shortDescription}</p>
-                            <div>
-                                <h4>{product.price}</h4> <p><del>50.000</del></p>
+                        <div className={"bg-light-bg p-4"}>
+                            <h3 className={"heading4"}>{product.title}</h3> <p className={"text-Gray-3 font-medium text-sm lg:text-base"}>{product.shortDescription}</p>
+                            <div className={"flex justify-between items-center mt-4"}>
+                                <h4 className={"heading4"}>{product.price}</h4> <p><del className={"text-Gray-4"}>50.000</del></p>
+                            </div>
+                        </div>
+                        <div className="h-full flex flex-col justify-center gap-y-4 items-center bg-Gray-1/70 absolute top-0 w-full opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto
+  transition-opacity duration-500">
+                        <SecondaryButton btnText={"Add to Cart"}/>
+                            <div className={"flex justify-evenly w-full items-center"}>
+                                <p className={"flex items-center space-x-1 font-semibold text-sm lg:text-base text-white hover:text-primary"}><span><CiShare2 /></span> <span>Share</span></p>
+                                <p className={"flex items-center space-x-1 font-semibold text-sm lg:text-base text-white hover:text-primary"}><span><FaArrowRightArrowLeft /></span> <span>Share</span></p>
+                                <p className={"flex items-center space-x-1 font-semibold text-sm lg:text-base text-white hover:text-primary"}><span><FaRegHeart /></span> <span>Share</span></p>
                             </div>
                         </div>
                     </div>
