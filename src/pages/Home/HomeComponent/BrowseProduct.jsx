@@ -3,10 +3,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import {BrowseProductItem} from "../../../lib.js"
-// import ApiData from "../../../hooks/ApiData.js";
 function BrowseProduct(props) {
-    // const { data, loading, error } = ApiData("https://dummyjson.com/products/category/furniture");
-    console.log("BrowseProduct", BrowseProductItem);
+
     const settings = {
         dots: false,
         infinite: true,
@@ -60,7 +58,7 @@ function BrowseProduct(props) {
                                 <div className={"overflow-hidden w-full h-[200px] lg:h-[508px] flex justify-center p-4 items-center"}>
                                     <img src={item.image} alt={item.title} className={"slider-image w-full hover:scale-110 transition duration-200 "} />
                                 </div>
-                                <h3 className={"mt-4 heading-4 group-hover:text-primary"}>{item.title}</h3>
+                                <h3 className={"mt-4 heading4 group-hover:text-primary"}>{item.title}</h3>
                             </div>
                         ))}
                     </Slider>
