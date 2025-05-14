@@ -27,9 +27,24 @@
     background-color: #f5f5f5;
     color: var(--color-Font-Color);
   }
+    .slick-prev{
+        @apply !-left-2
+    }
+    .slick-prev:before{
+        @apply !text-primary lg:hidden;
+    }
+    .slick-next{
+        @apply !-right-2
+    }
+    .slick-next:before{
+        @apply !text-primary lg:hidden;
+    }
 }
 @layer components {
     .heading2{
-        @apply text-[32px] font-bold
+        @apply lg:text-[32px] font-bold text-[24px] leading-[40px] lg:leading-[48px] ;
+    }
+    .heading4{
+        @apply lg:text-2xl font-semibold text-[20px] leading-[32px] lg:leading-[40px];
     }
 }

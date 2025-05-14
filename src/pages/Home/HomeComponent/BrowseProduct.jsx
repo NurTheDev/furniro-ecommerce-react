@@ -39,28 +39,28 @@ function BrowseProduct(props) {
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 1
                 }
             }
         ]
     };
     return (
-        <div className={"container mx-auto"}>
+        <div className={"container mx-auto px-4 lg:px-0"}>
             <div>
                 <div className={"text-center space-y-2"}>
                     <h2 className={"heading2"}>Browse The Range</h2>
-                    <p className={"text-xl text-Font-Color1"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius!</p>
+                    <p className={" lg:text-xl text-Font-Color1"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius!</p>
                 </div>
                 {/* Add more content or components related to browsing products here */}
                 <div className={"slider-container"}>
                     <Slider {...settings } >
                         {BrowseProductItem.map((item) => (
-                            <div key={item.id} className={"slider-item !flex justify-center mt-12 items-center flex-col cursor-pointer group"}>
-                                <div className={"overflow-hidden w-full h-[508px] flex justify-center p-4 items-center"}>
+                            <div key={item.id} className={"slider-item !flex justify-center mt-4 lg:mt-12 items-center flex-col cursor-pointer group"}>
+                                <div className={"overflow-hidden w-full h-[200px] lg:h-[508px] flex justify-center p-4 items-center"}>
                                     <img src={item.image} alt={item.title} className={"slider-image w-full hover:scale-110 transition duration-200 "} />
                                 </div>
-                                <h3 className={"mt-4 text-2xl font-semibold group-hover:text-primary"}>{item.title}</h3>
+                                <h3 className={"mt-4 heading-4 group-hover:text-primary"}>{item.title}</h3>
                             </div>
                         ))}
                     </Slider>
