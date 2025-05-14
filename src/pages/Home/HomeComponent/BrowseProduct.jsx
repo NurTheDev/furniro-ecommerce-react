@@ -50,7 +50,6 @@ function BrowseProduct(props) {
                     <h2 className={"heading2"}>Browse The Range</h2>
                     <p className={" lg:text-xl text-Font-Color1"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius!</p>
                 </div>
-                {/* Add more content or components related to browsing products here */}
                 <div className={"slider-container"}>
                     <Slider {...settings } >
                         {BrowseProductItem.map((item) => (
