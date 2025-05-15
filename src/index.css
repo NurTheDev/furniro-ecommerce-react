@@ -46,6 +46,29 @@
     .slick-next:before{
         @apply !text-primary lg:hidden;
     }
+    .slick-dots {
+        @apply !flex !justify-center !gap-4 !pl-4 lg:!bottom-14 lg:!left-36;
+    }
+
+    .slick-dots li {
+        @apply m-0;
+    }
+
+    .slick-dots button {
+        @apply text-[0px] leading-none block w-4 h-4 p-0 cursor-pointer border-none outline-none bg-transparent relative;
+    }
+
+    .slick-dots button::before {
+        content: "";
+        @apply absolute top-0 left-0 w-full h-full rounded-full transition-all duration-300;
+        border: 1px solid #CDAA7D; /* gold border */
+        background-color: #E0E0E0; /* light gray (inactive) */
+    }
+
+    .slick-dots .slick-active button::before {
+        background-color: #CDAA7D;
+    }
+
 }
 @layer components {
     .heading1{
@@ -57,4 +80,5 @@
     .heading4{
         @apply lg:text-2xl font-semibold text-[20px] leading-[32px] lg:leading-[40px];
     }
+
 }

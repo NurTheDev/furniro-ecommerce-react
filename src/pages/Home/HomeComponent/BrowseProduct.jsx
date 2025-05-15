@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import {BrowseProductItem} from "../../../lib.js"
 function BrowseProduct(props) {
-
     const settings = {
         dots: false,
         infinite: true,
