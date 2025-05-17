@@ -77,7 +77,7 @@ function BeautifulRooms() {
                         <div className={"flex justify-center items-end absolute bottom-0 lg:left-10 left-5 "}>
                             <div className={"bg-white/70 lg:p-8 p-2"}>
                               <p>{item.shortDescription}</p>
-                              <h3 className="lg:mt-4 mt-1 heading4 group-hover:text-primary">
+                              <h3 className="lg:mt-4 mt-1 heading4 hover:text-primary">
                                 {item.title}
                               </h3>
                             </div>

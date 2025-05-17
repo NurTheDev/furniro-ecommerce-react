@@ -4,15 +4,15 @@ import {CiShare2} from "react-icons/ci";
 import {FaArrowRightArrowLeft} from "react-icons/fa6";
 import {FaRegHeart} from "react-icons/fa";
 
-function ProductCard({data = [], loading, error}) {
+function ProductCard({data = [], loading, error, slice}) {
     if (loading) {
         return <div>Loading...</div>;
     }
     return (
         <>
             {
-                data.slice(0, 8)?.map((product) => (
-                    <div key={product.id} className={" lg:w-[calc(100%/4-1rem)] overflow-hidden cursor-pointer group relative"}>
+                data.slice(0, slice)?.map((product) => (
+                    <div key={product.id} className={"  overflow-hidden cursor-pointer group relative"}>
                         <div className={"relative h-[300px] w-full overflow-hidden"}><img
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             src={product.image}
@@ -30,7 +30,7 @@ function ProductCard({data = [], loading, error}) {
                         </div>
                         <div className="h-full flex flex-col justify-center gap-y-4 items-center bg-Gray-1/70 absolute top-0 w-full opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto
   transition-opacity duration-500">
-                        <SecondaryButton btnText={"Add to Cart"}/>
+                        <SecondaryButton btnText={"Add to Cart"} classname={"w-full"}/>
                             <div className={"flex justify-evenly w-full items-center"}>
                                 <p className={"flex items-center space-x-1 font-semibold text-sm lg:text-base text-white hover:text-primary"}><span><CiShare2 /></span> <span>Share</span></p>
                                 <p className={"flex items-center space-x-1 font-semibold text-sm lg:text-base text-white hover:text-primary"}><span><FaArrowRightArrowLeft /></span> <span>Share</span></p>
