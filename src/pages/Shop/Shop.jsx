@@ -12,9 +12,9 @@ function Shop(props) {
     const paginatedData = data?.slice(startIdx, endIdx);
     return (
         <div>
-            <div className={"container mx-auto"}>
+            <div className={"container mx-auto px-4 lg:px-6"}>
                 <div className={"flex flex-col justify-center items-center"}>
-                    <div className={"grid grid-cols-4 gap-4"}>
+                    <div className={"lg:grid grid-cols-4 gap-4"}>
                         <ProductCard data={paginatedData} loading={loading} error={error}/>
                     </div>
                     <Pagination setPage={setPage} page={page} total={data?.length} itemsPerPage={itemsPerPage} classname={"mt-10"}/></div>

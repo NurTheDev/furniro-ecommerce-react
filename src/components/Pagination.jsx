@@ -3,7 +3,7 @@ import React from 'react';
 function Pagination({setPage, page, total, itemsPerPage, classname}) {
     const totalPages = Math.ceil((total || 0) / (itemsPerPage || 1));
     return (
-        <div className={`join flex justify-center items-center w-full gap-x-5 ${classname}`}>
+        <div className={`join flex justify-center items-center w-full lg:gap-x-5 ${classname}`}>
             <button
                 className="join-item btn btn-square !px-8"
                 onClick={() => setPage(page - 1)}
