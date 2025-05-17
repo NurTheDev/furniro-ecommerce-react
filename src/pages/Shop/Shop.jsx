@@ -4,7 +4,7 @@ import ApiData from "../../hooks/ApiData.js";
 import Pagination from "../../components/Pagination.jsx";
 
 function Shop(props) {
-    const {data, loading, error} = ApiData("../../../../public/furniture_items_array.json");
+    const {data, loading, error} = ApiData("../../../../public/furniture_items_api.json");
     const [page, setPage] = React.useState(1);
     const itemsPerPage = 16;
     const startIdx = (page - 1) * itemsPerPage;
