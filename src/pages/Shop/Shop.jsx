@@ -5,13 +5,15 @@ import Pagination from "../../components/Pagination.jsx";
 import {HiOutlineAdjustmentsHorizontal} from "react-icons/hi2";
 import {HiViewGrid} from "react-icons/hi";
 import {BsViewList} from "react-icons/bs";
+import WeOffer from "./ShopComponent/WeOffer.jsx";
+import {MdKeyboardArrowRight} from "react-icons/md";
 
-function Shop(props) {
+function Shop() {
     const [showItems, setShowItems] = React.useState(16);
     const [view, setView] = React.useState(true);
     const [short, setShort] = React.useState("default");
     const {data, loading, error} = ApiData("../../../../public/furniture_items_api_v4.json");
-    // Sorting logic
+    //todo: add sorting and filtering
     const filteredSortData = useMemo(()=>{
         if(!data) return [];
         let sortedData = [...data];
@@ -52,9 +54,14 @@ function Shop(props) {
     const startIdx = (page - 1) * itemsPerPage;
     const endIdx = startIdx + itemsPerPage;
     const paginatedData = filteredSortData?.slice(startIdx, endIdx);
-
     return (
         <div>
+            <div className={" bg-[url('../../../src/Images/shopBanner.jpg')] bg-cover bg-no-repeat bg-center lg:py-32 py-16 relative"}>
+               <div className={"w-full h-full bg-white/40 absolute top-0 left-0 flex flex-col items-center justify-center"}>
+                   <h2 className={"heading1"}>Shop</h2>
+                   <p className={"flex items-center"}>Home <MdKeyboardArrowRight/> Shop</p>
+               </div>
+            </div>
             <div className={"bg-[#F9F1E7]"}>
                 <div
                     className={"container mx-auto px-4 lg:px-6 flex justify-between items-center py-4 lg:py-6 mb-8 lg:mb-16"}>
@@ -102,6 +109,7 @@ function Shop(props) {
                     <Pagination setPage={setPage} page={page} total={data?.length} itemsPerPage={itemsPerPage}
                                 classname={"mt-10"}/></div>
             </div>
+            <WeOffer/>
         </div>
     );
 }
