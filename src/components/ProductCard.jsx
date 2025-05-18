@@ -3,8 +3,10 @@ import SecondaryButton from "./SecondaryButton.jsx";
 import {CiShare2} from "react-icons/ci";
 import {FaArrowRightArrowLeft} from "react-icons/fa6";
 import {FaRegHeart} from "react-icons/fa";
+import {useNavigate} from "react-router";
 
 function ProductCard({data = [], loading, error, slice}) {
+    const navigate = useNavigate();
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -12,7 +14,7 @@ function ProductCard({data = [], loading, error, slice}) {
         <>
             {
                 data.slice(0, slice)?.map((product) => (
-                    <div key={product.id} className={"  overflow-hidden cursor-pointer group relative"}>
+                    <div key={product.id} className={"overflow-hidden cursor-pointer group relative"} onClick={()=> navigate("/ProductOverView", {state: {product}})}>
                         <div className={"relative h-[300px] w-full overflow-hidden"}><img
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             src={product.image}

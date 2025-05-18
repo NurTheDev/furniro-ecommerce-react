@@ -62,12 +62,13 @@ function Shop() {
                    <p className={"flex items-center"}>Home <MdKeyboardArrowRight/> Shop</p>
                </div>
             </div>
-            <div className={"bg-[#F9F1E7]"}>
+            <div className={"bg-[#props]"}>
                 <div
                     className={"container mx-auto px-4 lg:px-6 flex justify-between items-center py-4 lg:py-6 mb-8 lg:mb-16"}>
                     <div className={" gap-x-6 items-center hidden lg:flex"}>
-                        <div className={"flex items-center gap-x-2 cursor-pointer lg:text-xl hover:text-primary"}><span><HiOutlineAdjustmentsHorizontal/></span>
-                            <span>Filter</span></div>
+                        <div className={"flex items-center gap-x-2 cursor-pointer lg:text-xl hover:text-primary "}><span><HiOutlineAdjustmentsHorizontal/></span>
+                            <span>Filter</span>
+                        </div>
                         <span className={"cursor-pointer lg:text-xl hover:text-primary "} onClick={()=> setView(true)}><HiViewGrid/></span>
                         <span className={"cursor-pointer lg:text-xl hover:text-primary"} onClick={()=> setView(false)}><BsViewList/></span>
                         <p className={"border-l-2 border-l-Gray-4 lg:ps-8 ps-4"}>Showing {showItems} of {data?.length} results</p>
