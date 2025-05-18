@@ -11,7 +11,7 @@ function Pagination({setPage, page, total, itemsPerPage, classname}) {
             >
                 Prev
             </button>
-            {[...Array(7)].map((_, i) => (
+            {[...Array(totalPages)].map((_, i) => (
                 <button
                     key={i}
                     className={`join-item btn-square btn ${page === i + 1 ? 'btn-primary' : ''}`}

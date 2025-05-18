@@ -81,5 +81,11 @@
     .heading4{
         @apply lg:text-2xl font-semibold text-[20px] leading-[32px] lg:leading-[40px];
     }
+    .product-GridView{
+        @apply lg:grid grid-cols-4 gap-4 space-y-6 lg:space-y-0;
+    }
+    .product-ListView{
+        @apply lg:grid grid-cols-1 gap-4;
+    }
 
 }
