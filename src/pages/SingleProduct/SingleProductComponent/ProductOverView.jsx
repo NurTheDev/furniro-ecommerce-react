@@ -3,8 +3,9 @@ import {useLocation} from "react-router";
 import {MdKeyboardArrowRight} from "react-icons/md";
 import {GoStarFill} from "react-icons/go";
 import {colorClasses} from "../../../lib.js";
-import {FaMinus, FaPlus} from "react-icons/fa";
+import {FaFacebook, FaInstagram, FaLinkedin, FaMinus, FaPlus, FaTwitter} from "react-icons/fa";
 import CartBtn from "../../../components/CartBtn.jsx";
+
 const ProductOverView = () => {
     const location = useLocation();
     const {product} = location.state;
@@ -12,21 +13,25 @@ const ProductOverView = () => {
     const additionalImages = product?.additionalImages || [];
     const allImages = [...additionalImages, product?.image];
     return (
-        <div className={"container mx-auto mt-6 lg:mt-10 "}>
-            <div className="grid grid-cols-2 gap-x-10 gap-y-6">
-                <div className="col-span-1 grid grid-cols-6 gap-4">
-                    <div className={""}>
+        <div className={"container mx-auto mt-6 lg:mt-10 px-4 lg:px-0"}>
+            <div className="lg:grid lg:grid-cols-2 gap-x-10 gap-y-6">
+                <div className="lg:col-span-1 grid grid-cols-8 lg:grid-cols-6 gap-4">
+                    <div className={"col-span-2"}>
                         {allImages?.map((image, index) => (
-                            <div key={index} className="overflow-hidden w-full rounded-xl flex flex-col justify-center p-4 items-center cursor-pointer" onClick={()=> setMainImg(image)}>
-                                <img src={image} alt={`Additional Image ${index + 1}`} className="w-full rounded-xl hover:scale-105 object-cover h-full max-h-[80px] transition-transform duration-500"/>
+                            <div key={index}
+                                 className="overflow-hidden w-full rounded-xl flex flex-col justify-center p-4 items-center cursor-pointer "
+                                 onClick={() => setMainImg(image)}>
+                                <img src={image} alt={`Additional Image ${index + 1}`}
+                                     className="w-full rounded-xl hover:scale-105 object-cover h-full max-h-[80px] transition-transform duration-500"/>
                             </div>
                         ))}
                     </div>
-                    <div className={"col-span-5 h-full max-h-[500px] rounded-lg "}><img src={mainImg} alt={"Image"} className="w-full h-full object-cover transition-transform duration-500 rounded-lg"/></div>
+                    <div className={"col-span-6 lg:col-span-5 h-full max-h-[500px] rounded-lg "}><img src={mainImg} alt={"Image"} className="w-full h-full object-cover transition-transform duration-500 rounded-lg"/>
+                    </div>
                 </div>
                 <div className="col-span-1 flex flex-col justify-start space-y-4">
                     <h2 className="heading1">{product.title}</h2>
-                    <p className="text-lg lg:text-2xl text-[#9F9F9F]">  $ {product.price}</p>
+                    <p className="text-lg lg:text-2xl text-[#9F9F9F]"> $ {product.price}</p>
                     <div className={"flex justify-start"}>
                         <div className={"flex justify-start items-center gap-x-2 "}>
                             {Array(Math.floor(product.sortData?.rating || 0)).fill(0).map((_, index) => (
@@ -41,7 +46,8 @@ const ProductOverView = () => {
                         <div className={"flex justify-start gap-x-4 mt-3 "}>
                             {
                                 product?.sizes?.map((size, index) => (
-                                    <p key={index} className={"px-2 py-1 bg-[#F9F1E7] rounded-lg text-sm lg:text-base hover:bg-primary hover:text-white cursor-pointer"}>{size}</p>
+                                    <p key={index}
+                                       className={"px-2 py-1 bg-[#F9F1E7] rounded-lg text-sm lg:text-base hover:bg-primary hover:text-white cursor-pointer"}>{size}</p>
                                 ))
                             }
                         </div>
@@ -68,12 +74,45 @@ const ProductOverView = () => {
                                 <FaMinus/>
                             </button>
                             <span className={"px-4 py-2  rounded-lg text-sm lg:text-base"}>1</span>
-                            <button  className={"hover:text-primary cursor-pointer"} >
+                            <button className={"hover:text-primary cursor-pointer"}>
                                 <FaPlus/>
                             </button>
                         </div>
                         <CartBtn btnText={"Add To Cart"}/>
                         <CartBtn btnText={"+ Compare"}/>
+                    </div>
+                    <div className="mt-6 border-t border-Gray-4 pt-4">
+                        <table className="w-full">
+                            <tbody>
+                            <tr>
+                                <td className="text-Gray-4 py-2 font-medium">SKU</td>
+                                <td className="text-Gray-2 pl-4 py-2"><span className={"mr-2"}>: </span> {product.sku}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="text-Gray-4 py-2 font-medium">Category</td>
+                                <td className="text-Gray-2 pl-4 py-2"><span
+                                    className={"mr-2"}>: </span> {product.category}</td>
+                            </tr>
+                            <tr>
+                                <td className="text-Gray-4 py-2 font-medium">Tag</td>
+                                <td className="text-Gray-2 pl-4 py-2"><span className={"mr-2"}>: </span> {product.tags}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="text-Gray-4 py-2 font-medium">Share</td>
+                                <td className={"flex items-center"}><span
+                                    className={"mr-2 text-Gray-2 pl-4 py-2"}>: </span>
+                                    <div className={"flex gap-x-4 text-xl"}>
+                                        <span className={"hover:scale-105 cursor-pointer"}><FaFacebook/></span>
+                                        <span className={"hover:scale-105 cursor-pointer"}><FaLinkedin/></span>
+                                        <span className={"hover:scale-105 cursor-pointer"}><FaInstagram/></span>
+                                        <span className={"hover:scale-105 cursor-pointer"}><FaTwitter/></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
