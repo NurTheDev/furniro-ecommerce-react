@@ -4,7 +4,7 @@ import Api from "../../../../public/furniture_real_images.json"
 import ProductCard from "../../../components/ProductCard.jsx";
 import SecondaryButton from "../../../components/SecondaryButton.jsx";
 function OurProduct(props) {
-    const { data, loading, error } = ApiData("../../../../public/furniture_items_array.json");
+    const { data, loading, error } = ApiData("../../../../public/furniture_items_api_v4.json");
     return (
         <div className={"container mx-auto px-4 lg:px-0 lg:mt-14 mt-8 flex flex-col items-center"}>
             <h2 className={"heading1 text-center"}>Our Products</h2>
