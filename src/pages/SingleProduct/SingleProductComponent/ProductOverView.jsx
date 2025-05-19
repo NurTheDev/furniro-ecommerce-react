@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {useLocation} from "react-router";
 import {MdKeyboardArrowRight} from "react-icons/md";
 import {GoStarFill} from "react-icons/go";
-
+import {colorClasses} from "../../../lib.js";
+import {FaMinus, FaPlus} from "react-icons/fa";
+import CartBtn from "../../../components/CartBtn.jsx";
 const ProductOverView = () => {
     const location = useLocation();
     const {product} = location.state;
@@ -11,7 +13,7 @@ const ProductOverView = () => {
     const allImages = [...additionalImages, product?.image];
     return (
         <div className={"container mx-auto mt-6 lg:mt-10 "}>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-6">
                 <div className="col-span-1 grid grid-cols-6 gap-4">
                     <div className={""}>
                         {allImages?.map((image, index) => (
@@ -46,13 +48,33 @@ const ProductOverView = () => {
                     </div>
                     <div>
                         <p className={"text-Gray-4"}>Color</p>
-                        <div>
-                            {product?.availableColors?.map((color, index) => (
-                                <p className={`${color.toLowerCase() === ""}`}>{color}</p>
-                            ))}
+                        <div className="flex gap-2 flex-wrap mt-3">
+                            {product?.availableColors?.map((color, index) => {
+                                const lowerColor = color.toLowerCase();
+                                const bgClass = colorClasses[lowerColor] || "bg-gray-200";
+                                return (
+                                    <p
+                                        key={index}
+                                        className={`w-6 h-6 rounded-full ${bgClass} border border-gray-300 cursor-pointer hover:scale-110 transition-transform duration-300`}
+                                        title={color}
+                                    ></p>
+                                );
+                            })}
                         </div>
                     </div>
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-4">Add to Cart</button>
+                    <div className={"flex gap-5 items-center mt-4"}>
+                        <div className={"flex justify-between items-center border border-Gray-4 py-2 px-4 rounded-lg"}>
+                            <button className={"hover:text-primary cursor-pointer"}>
+                                <FaMinus/>
+                            </button>
+                            <span className={"px-4 py-2  rounded-lg text-sm lg:text-base"}>1</span>
+                            <button  className={"hover:text-primary cursor-pointer"} >
+                                <FaPlus/>
+                            </button>
+                        </div>
+                        <CartBtn btnText={"Add To Cart"}/>
+                        <CartBtn btnText={"+ Compare"}/>
+                    </div>
                 </div>
             </div>
 

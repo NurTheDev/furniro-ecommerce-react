@@ -51,3 +51,12 @@ export const BrowseProductItem =[
         price: 1000,
     }
 ]
+export const colorClasses = {
+    black: "bg-black",
+    white: "bg-white border border-gray-300 text-black",
+    gray: "bg-gray-500",
+    beige: "bg-[#F5F5DC]",
+    natural: "bg-[#E6D3B3]",
+    walnut: "bg-[#773F1A]",
+    "rustic brown": "bg-[#8B4513]",
+};
