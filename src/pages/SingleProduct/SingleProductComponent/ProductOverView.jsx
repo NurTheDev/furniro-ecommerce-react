@@ -33,7 +33,25 @@ const ProductOverView = () => {
                         </div>
                         <p className="text-sm lg:text-base pl-5 border-l-2 border-l-[#9F9F9F] ml-10 text-[#9F9F9F]">{product.sortData?.rating} ({product.sortData?.totalReviews} Reviews)</p>
                     </div>
-                    <p></p>
+                    <p className={"mt-2 text-Gray-2"}>{product?.description}</p>
+                    <div>
+                        <p className={"text-Gray-4"}>Size</p>
+                        <div className={"flex justify-start gap-x-4 mt-3 "}>
+                            {
+                                product?.sizes?.map((size, index) => (
+                                    <p key={index} className={"px-2 py-1 bg-[#F9F1E7] rounded-lg text-sm lg:text-base hover:bg-primary hover:text-white cursor-pointer"}>{size}</p>
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        <p className={"text-Gray-4"}>Color</p>
+                        <div>
+                            {product?.availableColors?.map((color, index) => (
+                                <p className={`${color.toLowerCase() === ""}`}>{color}</p>
+                            ))}
+                        </div>
+                    </div>
                     <button className="bg-blue-500 text-white px-4 py-2 rounded mt-4">Add to Cart</button>
                 </div>
             </div>
