@@ -14,7 +14,7 @@ function ProductCard({data = [], loading, error, slice}) {
         <>
             {
                 data.slice(0, slice)?.map((product) => (
-                    <div key={product.id} className={"overflow-hidden cursor-pointer group relative"} onClick={()=> navigate("/ProductOverView", {state: {product}})}>
+                    <div key={product.id} className={"overflow-hidden cursor-pointer group relative"} onClick={()=> navigate("/singleProduct", {state: {product}})}>
                         <div className={"relative h-[300px] w-full overflow-hidden"}><img
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             src={product.image}

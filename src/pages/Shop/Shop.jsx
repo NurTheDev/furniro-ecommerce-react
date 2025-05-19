@@ -62,7 +62,7 @@ function Shop() {
                    <p className={"flex items-center"}>Home <MdKeyboardArrowRight/> Shop</p>
                </div>
             </div>
-            <div className={"bg-[#props]"}>
+            <div className={"bg-[#F9F1E7]"}>
                 <div
                     className={"container mx-auto px-4 lg:px-6 flex justify-between items-center py-4 lg:py-6 mb-8 lg:mb-16"}>
                     <div className={" gap-x-6 items-center hidden lg:flex"}>
