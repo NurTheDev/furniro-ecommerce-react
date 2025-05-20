@@ -7,7 +7,7 @@ function Home(props) {
     return (
         <div>
             <BrowseProduct/>
-            <OurProduct/>
+            <OurProduct slice={8}/>
             <BeautifulRooms/>
         </div>
     );

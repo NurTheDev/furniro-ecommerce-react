@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import {useLocation} from "react-router";
-import {MdKeyboardArrowRight} from "react-icons/md";
 import {GoStarFill} from "react-icons/go";
 import {colorClasses} from "../../../lib.js";
 import {FaFacebook, FaInstagram, FaLinkedin, FaMinus, FaPlus, FaTwitter} from "react-icons/fa";
 import CartBtn from "../../../components/CartBtn.jsx";
+import data from "../../../../public/furniture_items_api_v4.json";
+import ProductCard from "../../../components/ProductCard.jsx";
+import SecondaryButton from "../../../components/SecondaryButton.jsx";
 
 const ProductOverView = () => {
     const location = useLocation();
@@ -97,7 +99,9 @@ const ProductOverView = () => {
                             </tr>
                             <tr>
                                 <td className="text-Gray-4 py-2 font-medium">Tag</td>
-                                <td className="text-Gray-2 pl-4 py-2"><span className={"mr-2"}>: </span> {product.tags}
+                                <td className="text-Gray-2 pl-4 py-2"><span className={"mr-2"}>: </span> {product.tags?.map((tag, index) => (
+                                    <span key={index} className={"text-Gray-2"}>{tag}{index < product.tags.length - 1 ? ", " : ""}</span>
+                                ))}
                                 </td>
                             </tr>
                             <tr>
@@ -121,10 +125,13 @@ const ProductOverView = () => {
                 <div onClick={(e)=> {
                     e.target.innerText === "Description" ? setInfo("description") : e.target.innerText === "Additional Information" ? setInfo("additional") : setInfo("reviews")
                 }}  className={`flex justify-around text-Gray-4 text-2xl items-center mt-10`}><h3
-                    className={"cursor-pointer"}>Description</h3><h3 className={"cursor-pointer"}>Additional Information</h3><h3 className={"cursor-pointer"}>Reviews [5]</h3></div>
+                    className={`cursor-pointer ${info === "description" && "font-semibold text-Font-Color"}`}>Description</h3><h3 className={`cursor-pointer ${info === "additional" && "font-semibold text-Font-Color"}`}>Additional Information</h3><h3 className={`cursor-pointer ${info === "reviews" && "font-semibold text-Font-Color"}`}>Reviews</h3></div>
                 {info === "description" ? (
                     <div className={"mt-4"}>
-                        <p className={"text-Gray-2"}>{product.description}</p>
+                        <p className={"text-Gray-3"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet autem dolorem harum iusto labore odit omnis praesentium rem vel voluptatibus.<br/><br/>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid amet aut consequatur deleniti deserunt dolor dolorem doloribus dolorum enim ex exercitationem explicabo, fugit harum id illum libero molestiae nihil nobis odit, officia, omnis optio porro possimus praesentium quaerat quis quo recusandae reiciendis rem soluta temporibus tenetur voluptate voluptatem voluptatum!<br/><br/>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos in minima odio officiis omnis perspiciatis rem suscipit. Animi aperiam cupiditate illo iure labore obcaecati tenetur? Iste nam natus repellendus?
+                        </p>
                     </div>
                 ) : info === "additional" ? (
                     <table className="w-full mt-4">
@@ -184,6 +191,17 @@ const ProductOverView = () => {
                     </div>
                 ) : null
                 }
+            </div>
+            <div className={"flex justify-around lg:mt-10 lg-mt-4 gap-4"}>
+                <div className={"overflow-hidden"}><img src={product?.additionalImages[0]} alt="" className={"object-cover max-h-[350px] h-full"}/></div>
+                <div className={"max-h-[350px] h-full"}><img src={product?.additionalImages[2]} alt="" className={"object-cover max-h-[350px] h-full"}/></div>
+            </div>
+            <div className={"flex justify-center flex-col items-center lg:mt-10 lg-mt-4"}>
+                <h2 className={"heading2 text-center mt-10"}>Related Products</h2>
+                <div className={"lg:grid lg:grid-cols-4 gap-4 mt-10"}>
+                    <ProductCard data={data} loading={false} error={false} slice={4}/>
+                </div>
+                <SecondaryButton btnText={"Show More"} classname={"lg:mt-10 mt-8 w-full"}/>
             </div>
         </div>
     );
