@@ -10,13 +10,14 @@ const ProductOverView = () => {
     const location = useLocation();
     const {product} = location.state;
     const [mainImg, setMainImg] = useState(product?.image);
+    const [info, setInfo] = useState("additional");
     const additionalImages = product?.additionalImages || [];
     const allImages = [...additionalImages, product?.image];
     return (
         <div className={"container mx-auto mt-6 lg:mt-10 px-4 lg:px-0"}>
             <div className="lg:grid lg:grid-cols-2 gap-x-10 gap-y-6">
                 <div className="lg:col-span-1 grid grid-cols-8 lg:grid-cols-6 gap-4">
-                    <div className={"col-span-2"}>
+                    <div className={"col-span-2 lg:col-span-1"}>
                         {allImages?.map((image, index) => (
                             <div key={index}
                                  className="overflow-hidden w-full rounded-xl flex flex-col justify-center p-4 items-center cursor-pointer "
@@ -68,7 +69,7 @@ const ProductOverView = () => {
                             })}
                         </div>
                     </div>
-                    <div className={"flex gap-5 items-center mt-4"}>
+                    <div className={"flex gap-2 lg:gap-5 items-center mt-4"}>
                         <div className={"flex justify-between items-center border border-Gray-4 py-2 px-4 rounded-lg"}>
                             <button className={"hover:text-primary cursor-pointer"}>
                                 <FaMinus/>
@@ -116,7 +117,74 @@ const ProductOverView = () => {
                     </div>
                 </div>
             </div>
-
+            <div>
+                <div onClick={(e)=> {
+                    e.target.innerText === "Description" ? setInfo("description") : e.target.innerText === "Additional Information" ? setInfo("additional") : setInfo("reviews")
+                }}  className={`flex justify-around text-Gray-4 text-2xl items-center mt-10`}><h3
+                    className={"cursor-pointer"}>Description</h3><h3 className={"cursor-pointer"}>Additional Information</h3><h3 className={"cursor-pointer"}>Reviews [5]</h3></div>
+                {info === "description" ? (
+                    <div className={"mt-4"}>
+                        <p className={"text-Gray-2"}>{product.description}</p>
+                    </div>
+                ) : info === "additional" ? (
+                    <table className="w-full mt-4">
+                        <tbody>
+                        <tr>
+                            <td className="text-Gray-4 py-2 font-medium">Instructions</td>
+                            <td className="text-Gray-2 pl-4 py-2"><span className={"mr-2"}>: </span> {product?.additionalInformation?.careInstructions}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="text-Gray-4 py-2 font-medium">Depth</td>
+                            <td className="text-Gray-2 pl-4 py-2"><span
+                                className={"mr-2"}>: </span> {product?.additionalInformation?.dimensions?.depth}</td>
+                        </tr><tr>
+                            <td className="text-Gray-4 py-2 font-medium">Height</td>
+                            <td className="text-Gray-2 pl-4 py-2"><span
+                                className={"mr-2"}>: </span> {product?.additionalInformation?.dimensions?.height}</td>
+                        </tr><tr>
+                            <td className="text-Gray-4 py-2 font-medium">Width</td>
+                            <td className="text-Gray-2 pl-4 py-2"><span
+                                className={"mr-2"}>: </span> {product?.additionalInformation?.dimensions?.width}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-Gray-4 py-2 font-medium">Materials</td>
+                            <td className="text-Gray-2 pl-4 py-2"><span className={"mr-2"}>: </span>
+                                {product?.additionalInformation?.materials?.map((material, index) => (
+                                    <span key={index} className={"text-Gray-2"}>{material}{index < product?.additionalInformation?.materials.length - 1 ? ", " : ""}</span>
+                                ))}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="text-Gray-4 py-2 font-medium">Warranty</td>
+                            <td className="text-Gray-2 pl-4 py-2"><span
+                                className={"mr-2"}>: </span> {product?.additionalInformation?.warranty}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-Gray-4 py-2 font-medium">Weight</td>
+                            <td className="text-Gray-2 pl-4 py-2"><span
+                                className={"mr-2"}>: </span> {product?.additionalInformation?.weight}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                ) : info === "reviews" ? (
+                    <div className={"mt-4"}>
+                        <p className={"text-Gray-2"}>There are no reviews yet.</p>
+                        <p className={"text-Gray-2 mt-4"}>Be the first to review “{product.title}”</p>
+                        <form className={"mt-4"}>
+                            <div className={"flex flex-col gap-y-4"}>
+                                <textarea placeholder={"Write your review here..."} className={"border border-Gray-4 rounded-lg p-4 h-[200px]"}></textarea>
+                                <input type="text" placeholder={"Your Name"} className={"border border-Gray-4 rounded-lg p-4"}/>
+                                <input type="email" placeholder={"Your Email"} className={"border border-Gray-4 rounded-lg p-4"}/>
+                            </div>
+                            <button type="submit" className={"bg-primary text-white px-6 py-2 rounded-lg mt-4"}>Submit
+                                Review
+                            </button>
+                        </form>
+                    </div>
+                ) : null
+                }
+            </div>
         </div>
     );
 };
