@@ -14,8 +14,6 @@ function Shop() {
     const [short, setShort] = React.useState("default");
     const {data, loading, error} = ApiData("../../../../public/furniture_items_api_v4.json");
     //todo: add sorting and filtering;
-    // const [sortData, setSortData] = React.useState(data);
-    // const [filterData, setFilterData] = React.useState(data);
     const filteredSortData = useMemo(() => {
         if (!data) return [];
         let sortedData = [...data];
